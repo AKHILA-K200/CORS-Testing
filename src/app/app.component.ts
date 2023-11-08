@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AppService } from './app.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Cors-testing';
+  constructor(private service:AppService){}
+  submit(){
+
+    let request: any = {
+      "email": "vinu@mailinator.com"
+    };
+this.service.submitToServer(request).subscribe((res)=>{
+  console.log(res);
+});
+  }
 }
